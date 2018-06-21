@@ -1,0 +1,23 @@
+language: cpp
+version: 0.1.0
+
+platform:
+    - target : ubuntu
+      version: 14.04
+      arch : i686
+
+install:
+    - sudo apt-get install -y libopencv-dev git
+	- git clone https://github.com/NoosWare/noos-api-cpp.git 
+    - cd noos-api-cpp && mkdir build && cd build && cmake ..
+    - sudo make install -y
+	- cd ../.. 
+
+build:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
+
+package:
+    - build/nao_vision_example
